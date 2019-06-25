@@ -10,9 +10,14 @@ import {
 import {
   limitTimes,
 } from './middleware'
+import cors from 'cors'
 
 const app = express()
 const PORT = 6329
+
+app.use(cors({
+  origin: ['45.77.134.42']
+}))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
