@@ -6,18 +6,17 @@ import {
 load('/etc/verify.env')
 import {
   mainRouter,
+  originWhiteListRouter,
 } from './routes'
 import {
   limitTimes,
+  corsWhiteList,
 } from './middleware'
-import cors from 'cors'
 
 const app = express()
 const PORT = 6329
 
-app.use(cors({
-  origin: ['45.77.134.42']
-}))
+app.use(corsWhiteList())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({
@@ -27,6 +26,7 @@ app.use(bodyParser.urlencoded({
 app.use('/', limitTimes)
 
 app.use('/', mainRouter)
+app.use('/originWhiteList', originWhiteListRouter)
 
 app.listen(PORT, () => {
   console.log(`server start at ${PORT}`)

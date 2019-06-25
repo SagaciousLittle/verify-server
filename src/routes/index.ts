@@ -14,6 +14,7 @@ import {
 } from '../database/redis'
 
 export const mainRouter = Router()
+export {originWhiteListRouter} from './originWhiteList'
 
 // 登录获取TOKEN，返回用户信息
 mainRouter.post('/login', async (req, res) => {

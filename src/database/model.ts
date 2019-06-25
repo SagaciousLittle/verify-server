@@ -72,4 +72,39 @@ User.init({
   updatedAt: false,
 })
 
+
+/**
+ * 跨域白名单
+ *
+ * @export
+ * @class OriginWhiteList
+ * @extends {Model}
+ */
+export class OriginWhiteList extends Model {
+  public id!: number
+  public originIp!: string
+  public type!: number
+}
+
+/* 白名单模块类型，便于以后扩展 */
+enum OriginWhiteListType {
+  PUBLIC,
+}
+
+OriginWhiteList.init({
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  originIp: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  type: {
+    type: DataTypes.INTEGER,
+    defaultValue: OriginWhiteListType.PUBLIC
+  }
+}, {sequelize})
+
 sequelize.sync()
