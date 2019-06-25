@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "pm2 start dist/verify-server.js",
     "watch": "tsc -w",
-    "start": "nodemon --inspect dist/index.js",
+    "dev": "nodemon --inspect dist/verify-server.js",
     "build": "tsc"
   },
   "keywords": [],
